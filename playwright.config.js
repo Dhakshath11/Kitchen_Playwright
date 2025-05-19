@@ -42,7 +42,7 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 }
       }
     },
-    {
+    /*{
       name: 'chrome:latest:Windows 11@lambdatest',
       use: {
         viewport: { width: 1280, height: 720 }
@@ -65,7 +65,7 @@ export default defineConfig({
       use: {
         viewport: { width: 1920, height: 1080 }
       }
-    }
+    }*/
   ],
   timeout: 60000, // Test Timeout
   expect: {

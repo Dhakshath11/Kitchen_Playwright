@@ -10,17 +10,31 @@ maxRetries: 1
 concurrency: 2
 pre:
   - npm install
-  - npx playwright install
+  # - npx playwright install (We can use this command if we want to install all the browsers as firewall blocks the public URL download)
+
 cacheKey: '{{ checksum "package-lock.json" }}'
 cacheDirectories:
   - node_modules
 testDiscovery:
   type: raw
   mode: remote
-  command: grep -lr 'test.describe' tests
-testRunnerCommand: npx playwright test $test
+  # command: grep -lr 'test.describe' tests
+  command: grep -nri 'test.describe' tests  | sed 's/:test.*//'
+testRunnerCommand: npx playwright test $test --config=playwright_onprem.config.js
 
-jobLabel: [playwright-VanillaJS, win, autosplit] 
+env:
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
+jobLabel: [playwright, linux, autosplit] 
+
+project:
+  name: 'Kitchen_Playwright' #project name
+  id: '01JVKYDJC905GV7TT02HC29MP7' #project id
+
+report: true
+partialReports:
+ location: playwright-report
+ type: html
 
 # test.describe defined in page_test.spec.js is a group. below Command will run all the tests in the group.
 # grep -lr 'test.describe' tests ==> is a standard Linux/Unix command that searches recursively for files under the tests directory that contain the string "test.describe".

@@ -22,19 +22,18 @@ test.beforeEach(async ({ page }) => {
 test.afterEach(async ({ page }) => {
   // Redundent Code, hence commented. >>> Refer Line >> 62 : 70 in Lambdatest-Setup.js code
 
+  //Lambdatest Test Status Update
+  if (testInfo.status === 'passed') {
+    await page.evaluate(_ => { }, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Test Passed' } })}`)
+  } else {
+    await page.evaluate(_ => { }, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Test Failed' } })}`)
+  }
+  console.log('Test Status Updated');
+
   /** 
-    //Lambdatest Test Status Update
-    const title = await page.title()
-    try {
-      expect(title).toEqual('Swag Labs')
-      await page.evaluate(_ => { }, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
-    } catch {
-      await page.evaluate(_ => { }, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Title not matched' }})}`)
-    }
-  
-    await page.close();
-    console.log('Browser Closed');
-    */
+  await page.close();
+  console.log('Browser Closed');
+  */
 })
 
 // After All
@@ -90,6 +89,9 @@ test.describe('Page Object Model', () => {  // Grouping the tests
     await Dashboard.addItems();
     await Dashboard.cartLink();
     await Cart.removeItems();
+
+    // Deliberately failing the test
+    test.fail('Failing the test to check the test status update on LambdaTest');
 
     //   Without page strategy
     // await page.goto('https://www.saucedemo.com/');

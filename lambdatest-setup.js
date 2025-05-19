@@ -48,6 +48,7 @@ exports.test = base.test.extend({
       modifyCapabilities(testInfo.project.name, `${testInfo.title} - ${fileName}`)
       let context, browser, ltPage;
 
+      /*
       // Desktop test
       browser = await chromium.connect(`wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`)
       ltPage = await browser.newPage(testInfo.project.use)
@@ -68,7 +69,8 @@ exports.test = base.test.extend({
       await context?.close()
       await browser?.close()
     } else {
-      // Run tests in local in case of local config provided
+      // Run tests in local in case of local config provided  
+      */
       await use(page)
     }
   },
