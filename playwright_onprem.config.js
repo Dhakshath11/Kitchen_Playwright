@@ -18,8 +18,8 @@ function getWSEndpoint(projectName, testName = 'Playwright Test') {
       platform: platform || 'Windows 10',
       build: 'Playwright HyperExecute Build',
       name: testName,
-      user: LT_USERNAME,
-      accessKey: LT_ACCESS_KEY,
+      user: LT_USERNAME, // ENV variable for LambdaTest username
+      accessKey: LT_ACCESS_KEY, // ENV variable for LambdaTest access key
       network: true,
       video: true,
       console: true,
