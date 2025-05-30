@@ -1,4 +1,5 @@
 import { test } from '../lambdatest-setup.js' // Test needs to be imported from lamndatest-setup.js as we customized the driver creation
+//import { test } from '@playwright/test'     // For local execution, you can use this import instead of the above line
 import { expect } from '@playwright/test';
 import { LoginPage } from './pages/loginPage';
 import { DashboardPage } from './pages/dashboardPage';
