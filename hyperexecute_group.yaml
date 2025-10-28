@@ -27,9 +27,9 @@ env:
 
 jobLabel: [playwright, linux, autosplit] 
 
-project:
-  name: 'Kitchen_Playwright' #project name
-  id: '01JVKYDJC905GV7TT02HC29MP7' #project id
+# project:
+#   name: 'Kitchen_Playwright' #project name
+#   id: '01JVKYDJC905GV7TT02HC29MP7' #project id
 
 report: true
 partialReports:
